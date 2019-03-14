@@ -3,7 +3,7 @@ package com.liun.example.adapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.liun.example.R
-import com.liun.example.project.ProjectListBean
+import com.liun.example.project.model.ProjectListBean
 
 /**
  * Description:

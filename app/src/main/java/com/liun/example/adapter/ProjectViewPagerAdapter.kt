@@ -3,10 +3,10 @@ package com.liun.example.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.liun.example.fragment.ArticleListFragment
-import com.liun.example.fragment.ProjectListFragment
-import com.liun.example.fragment.WxarticleListFragment
-import com.liun.example.project.ProjectBean
+import com.liun.example.setup.view.SetupListFragment
+import com.liun.example.project.view.ProjectListFragment
+import com.liun.example.wxartcile.view.WxarticleListFragment
+import com.liun.example.project.model.ProjectBean
 
 /**
  * Description:
@@ -23,7 +23,7 @@ class ProjectViewPagerAdapter(fm: FragmentManager, var tab: Int) : FragmentState
         when (tab) {
             PROJECT -> return ProjectListFragment.newInstance(data.id)
             WXARTICLE -> return WxarticleListFragment.newInstance(data.id)
-            ARTICLE -> return ArticleListFragment.newInstance(data)
+            ARTICLE -> return SetupListFragment.newInstance(data)
         }
 
         return null

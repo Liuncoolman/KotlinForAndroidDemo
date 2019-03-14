@@ -22,11 +22,11 @@
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".login.view.LoginActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,10 +35,10 @@
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
-            android:name=".activity.WebViewActivity"
+            android:name=".WebViewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
-            android:name=".activity.ArticleDetailActivity"
+            android:name=".setup.view.ArticleDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 

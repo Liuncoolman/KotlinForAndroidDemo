@@ -4,7 +4,7 @@ package com.liun.example.http
 import com.android.kotlinapp.wzp.utils.GsonUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.liun.example.BaseBean
+import com.liun.example.base.BaseBean
 import com.liun.example.MyApplication
 import com.zhouyou.http.callback.ProgressDialogCallBack
 import com.zhouyou.http.exception.ApiException
