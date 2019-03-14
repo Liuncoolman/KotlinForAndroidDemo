@@ -1,9 +1,9 @@
 package com.liun.example.impl
 
-import com.liun.example.model.BannerBean
-import com.liun.example.model.BlogBean
-import com.liun.example.model.ProjectBean
-import com.liun.example.model.ProjectListBean
+import com.liun.example.blog.BannerBean
+import com.liun.example.blog.BlogBean
+import com.liun.example.project.ProjectBean
+import com.liun.example.project.ProjectListBean
 
 /**
  * Description:

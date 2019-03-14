@@ -1,4 +1,4 @@
-package com.liun.example.model
+package com.liun.example.project
 
 import com.liun.example.BaseBean
 import java.io.Serializable

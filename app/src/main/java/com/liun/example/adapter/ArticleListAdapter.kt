@@ -1,11 +1,10 @@
 package com.liun.example.adapter
 
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.liun.example.R
-import com.liun.example.model.ProjectBean
+import com.liun.example.project.ProjectBean
 
 /**
  * Description:

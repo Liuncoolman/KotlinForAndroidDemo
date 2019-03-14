@@ -7,7 +7,7 @@ package com.liun.example.http
  *
  */
 object AppBaseUrl {
-    val BaseUrl = "http://www.wanandroid.com/"
+    val BaseUrl = "https://www.wanandroid.com/"
 
     val loginUrl = BaseUrl + "user/login"
     val bannerList = BaseUrl + "banner/json"

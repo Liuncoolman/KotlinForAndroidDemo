@@ -1,4 +1,4 @@
-package com.liun.example.fragment
+package com.liun.example.blog
 
 import android.content.Context
 import android.content.Intent
@@ -15,10 +15,6 @@ import com.liun.example.R
 import com.liun.example.activity.WebViewActivity
 import com.liun.example.adapter.BlogAdapter
 import com.liun.example.base.BaseFragment
-import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.BannerBean
-import com.liun.example.model.BlogBean
-import com.liun.example.presenter.BlogPresenter
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
@@ -33,13 +29,14 @@ import kotlinx.android.synthetic.main.fragment_blog.view.*
  * Date:2019/01/05 14:57
  *
  */
-class BlogFragment : BaseFragment(), OnRequestCallBackListener.BlogListener, BaseQuickAdapter.RequestLoadMoreListener,
-    SwipeRefreshLayout.OnRefreshListener, OnRequestCallBackListener.BannerListener {
+class BlogFragment : BaseFragment(), BaseQuickAdapter.RequestLoadMoreListener,
+    SwipeRefreshLayout.OnRefreshListener, BlogView {
+
     private var index = 1
     private lateinit var mAdapter: BlogAdapter
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
-    private lateinit var mPresenter: BlogPresenter
+    private lateinit var mPresenter: BlogPresenterImpl
     private lateinit var mBanner: Banner
 
     companion object {
@@ -55,8 +52,6 @@ class BlogFragment : BaseFragment(), OnRequestCallBackListener.BlogListener, Bas
     }
 
     override fun initView(view: View) {
-        mPresenter = BlogPresenter(this)
-
         mRecyclerView = view.recyclerView
         mSwipeRefreshLayout = view.swipeRefreshLayout
         view.recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -66,19 +61,20 @@ class BlogFragment : BaseFragment(), OnRequestCallBackListener.BlogListener, Bas
         initBanner(view)
         // blog
         initBlogView(view)
+
+        mPresenter = BlogPresenterImpl(this)
+        mPresenter.getBanner()
     }
 
     private fun initBanner(v: View) {
         val view = LayoutInflater.from(activity).inflate(R.layout.blog_banner, null)
         mBanner = view.banner
         mAdapter.addHeaderView(view)
-        mPresenter.getBannerList(this)
     }
 
     private fun initBlogView(v: View) {
         mAdapter.setNewData(null)
         mAdapter.setEmptyView(R.layout.layout_net_loading, v.recyclerView)
-        mPresenter.getBlogList(index)
 
         mAdapter.setOnLoadMoreListener(this, v.recyclerView)
         mAdapter.setOnItemClickListener { adapter, view, position ->
@@ -92,31 +88,11 @@ class BlogFragment : BaseFragment(), OnRequestCallBackListener.BlogListener, Bas
         v.swipeRefreshLayout.setOnRefreshListener(this)
     }
 
-    override fun onSuccess(bean: BlogBean?) {
-        if (bean?.data != null && bean.data.datas.isNotEmpty()) {
-
-            if (index == 1) {
-                mAdapter.setNewData(bean.data.datas)
-            } else {
-                mAdapter.addData(bean.data.datas)
-            }
-
-            if (bean.data.datas.size < 15) mAdapter.loadMoreEnd() else mAdapter.loadMoreComplete()
-        } else {
-            mAdapter.setNewData(null)
-            mAdapter.setEmptyView(R.layout.layout_net_nodata, mRecyclerView)
-        }
-
-        mAdapter.setEnableLoadMore(true)
-        if (mSwipeRefreshLayout.isRefreshing) mSwipeRefreshLayout.isRefreshing = false
-
-    }
-
-    override fun onSuccess(bean: BannerBean?) {
-        if (bean?.data != null && bean.data.isNotEmpty()) {
+    override fun bannerList(bannerBean: BannerBean) {
+        if (bannerBean.data.isNotEmpty()) {
             val titleList = arrayListOf<String>()
             val imageList = arrayListOf<String>()
-            for (banner in bean.data) {
+            for (banner in bannerBean.data) {
                 titleList.add(banner.title)
                 imageList.add(banner.imagePath)
             }
@@ -145,15 +121,34 @@ class BlogFragment : BaseFragment(), OnRequestCallBackListener.BlogListener, Bas
         }
     }
 
+    override fun blogList(blogBean: BlogBean) {
+        if (blogBean.data.datas.isNotEmpty()) {
+
+            if (index == 1) {
+                mAdapter.setNewData(blogBean.data.datas)
+            } else {
+                mAdapter.addData(blogBean.data.datas)
+            }
+
+            if (blogBean.data.datas.size < 15) mAdapter.loadMoreEnd() else mAdapter.loadMoreComplete()
+        } else {
+            mAdapter.setNewData(null)
+            mAdapter.setEmptyView(R.layout.layout_net_nodata, mRecyclerView)
+        }
+
+        mAdapter.setEnableLoadMore(true)
+        if (mSwipeRefreshLayout.isRefreshing) mSwipeRefreshLayout.isRefreshing = false
+    }
+
     override fun onLoadMoreRequested() {
-        mPresenter.getBlogList(index++)
+        mPresenter.getBlog(index++)
     }
 
     override fun onRefresh() {
         mAdapter.setNewData(null)
         mAdapter.setEmptyView(R.layout.layout_net_loading, mRecyclerView)
         index = 1
-        mPresenter.getBlogList(index)
+        mPresenter.getBlog(index)
     }
 
     override fun onDestroy() {

@@ -10,7 +10,7 @@ import com.liun.example.R
 import com.liun.example.activity.ArticleDetailActivity
 import com.liun.example.adapter.ArticleListAdapter
 import com.liun.example.base.BaseFragment
-import com.liun.example.model.ProjectBean
+import com.liun.example.project.ProjectBean
 import kotlinx.android.synthetic.main.fragment_article_list.view.*
 
 /**

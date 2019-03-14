@@ -9,8 +9,8 @@ import com.liun.example.R
 import com.liun.example.adapter.ProjectListAdapter
 import com.liun.example.base.BaseActivity
 import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.ProjectBean
-import com.liun.example.model.ProjectListBean
+import com.liun.example.project.ProjectBean
+import com.liun.example.project.ProjectListBean
 import com.liun.example.presenter.ArticlePresenter
 import kotlinx.android.synthetic.main.activity_article_detail.*
 

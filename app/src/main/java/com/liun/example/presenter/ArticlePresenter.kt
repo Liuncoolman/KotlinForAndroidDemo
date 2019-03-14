@@ -6,8 +6,8 @@ import com.liun.example.Constants
 import com.liun.example.http.BaseCallBack
 import com.liun.example.http.HttpModel
 import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.ProjectBean
-import com.liun.example.model.ProjectListBean
+import com.liun.example.project.ProjectBean
+import com.liun.example.project.ProjectListBean
 
 /**
  * Description:

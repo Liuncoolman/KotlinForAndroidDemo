@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  * Date:2019/01/02 17:36
  *
  */
-class LoginActivity : BaseActivity(), OnRequestCallBackListener.LoginListener {
+class LoginActivity : BaseActivity(), OnRequestCallBackListener.LoginListener, LoginView {
 
     override fun setLayoutId(): Int {
         return R.layout.activity_login
@@ -44,9 +44,9 @@ class LoginActivity : BaseActivity(), OnRequestCallBackListener.LoginListener {
         SPUtils.getInstance().put(Constants.KEY_IS_LOGIN, true)
     }
 
-    fun doLogin(view: View) {
-        val account = et_account.text.toString()
-        val password = et_psw.text.toString()
-        LoginPresenter().HttpPostLogin(this, account, password, this)
+    fun doLogin(view: View){
+
+        LoginPresenterImpl(this,this)
+            .validateCredentials(et_account.text.toString(),et_psw.text.toString())
     }
 }

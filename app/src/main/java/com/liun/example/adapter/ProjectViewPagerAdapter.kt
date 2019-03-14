@@ -3,11 +3,10 @@ package com.liun.example.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.liun.example.fragment.ArticleFragment
 import com.liun.example.fragment.ArticleListFragment
 import com.liun.example.fragment.ProjectListFragment
 import com.liun.example.fragment.WxarticleListFragment
-import com.liun.example.model.ProjectBean
+import com.liun.example.project.ProjectBean
 
 /**
  * Description:

@@ -1,11 +1,10 @@
-package com.liun.example.presenter
+package com.liun.example.project
 
 import com.android.kotlinapp.wzp.utils.GsonUtils
 import com.liun.example.Constants
 import com.liun.example.http.BaseCallBack
 import com.liun.example.http.HttpModel
 import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.ProjectListBean
 
 /**
  * Description:

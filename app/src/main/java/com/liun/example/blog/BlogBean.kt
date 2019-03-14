@@ -1,4 +1,4 @@
-package com.liun.example.model
+package com.liun.example.blog
 
 import com.liun.example.BaseBean
 

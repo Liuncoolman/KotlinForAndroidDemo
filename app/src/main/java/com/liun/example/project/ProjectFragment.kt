@@ -1,6 +1,5 @@
-package com.liun.example.fragment
+package com.liun.example.project
 
-import android.app.Activity
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.View
@@ -8,8 +7,6 @@ import com.liun.example.R
 import com.liun.example.adapter.ProjectViewPagerAdapter
 import com.liun.example.base.BaseFragment
 import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.ProjectBean
-import com.liun.example.presenter.ProjectPresenter
 import kotlinx.android.synthetic.main.fragment_project.view.*
 
 /**

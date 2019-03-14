@@ -14,7 +14,7 @@ import com.liun.example.activity.WebViewActivity
 import com.liun.example.adapter.ProjectListAdapter
 import com.liun.example.base.BaseFragment
 import com.liun.example.impl.OnRequestCallBackListener
-import com.liun.example.model.ProjectListBean
+import com.liun.example.project.ProjectListBean
 import com.liun.example.presenter.WxarticlePresenter
 import kotlinx.android.synthetic.main.fragment_wxarticle_list.view.*
 
