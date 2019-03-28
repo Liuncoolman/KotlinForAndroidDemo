@@ -1,4 +1,4 @@
-package com.android.kotlinapp.wzp.utils
+package com.liun.example.utils
 
 import com.google.gson.Gson
 

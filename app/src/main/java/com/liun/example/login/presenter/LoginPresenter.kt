@@ -1,13 +1,11 @@
 package com.liun.example.login.presenter
 
-import com.android.kotlinapp.wzp.utils.GsonUtils
-import com.blankj.utilcode.util.ToastUtils
-import com.liun.example.base.BaseBean
-import com.liun.example.Constants
-import com.liun.example.http.BaseIProgressDialog
-import com.liun.example.http.BaseProgressCallBack
-import com.liun.example.http.HttpModel
+import com.liun.example.http.retrofit.BaseObserver
+import com.liun.example.http.retrofit.RetrofitFactory
 import com.liun.example.login.contract.LoginContract
+import com.liun.example.login.model.LoginBean
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Description:
@@ -24,17 +22,29 @@ class LoginPresenter() : LoginContract.Presenter {
     }
 
     override fun login() {
-        HttpModel.HttpPostLogin(object : BaseProgressCallBack<String>(BaseIProgressDialog(view.aty)) {
+        /*HttpModel.HttpPostLogin(object : BaseProgressCallBack<String>(BaseIProgressDialog(view.aty)) {
             override fun onSuccess(result: String) {
                 super.onSuccess(result)
-                val bean = GsonUtils.toBean(result, BaseBean::class.java)
+                val bean = com.liun.example.utils.GsonUtils.toBean(result, BaseBean::class.java)
                 if (bean?.errorCode == Constants.CODE_SUCCESS) {
                     view.onSuccess(result)
                 } else {
                     ToastUtils.showShort(bean?.errorMsg)
                 }
             }
-        }, view.userName, view.userPwd)
+        }, view.userName, view.userPwd)*/
+
+        val observable =
+            RetrofitFactory.instance.getApiService().login(view.userName, view.userPwd)
+        observable
+            .subscribeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread()) // 指定主线程
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : BaseObserver<LoginBean>(view.aty) {
+                override fun onSuccess(t: LoginBean?) {
+                    view.onSuccess("")
+                }
+            })
     }
 
     override fun start() {

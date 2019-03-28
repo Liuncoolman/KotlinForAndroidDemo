@@ -1,6 +1,6 @@
 package com.liun.example.project.presenter
 
-import com.android.kotlinapp.wzp.utils.GsonUtils
+import com.liun.example.utils.GsonUtils
 import com.liun.example.Constants
 import com.liun.example.http.BaseCallBack
 import com.liun.example.http.HttpModel

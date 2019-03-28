@@ -1,6 +1,6 @@
 package com.liun.example.blog.presenter
 
-import com.android.kotlinapp.wzp.utils.GsonUtils
+import com.liun.example.utils.GsonUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.liun.example.Constants
 import com.liun.example.blog.contract.BlogContract
