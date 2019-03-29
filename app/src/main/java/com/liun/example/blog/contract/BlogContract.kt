@@ -1,9 +1,10 @@
 package com.liun.example.blog.contract
 
+import android.support.v4.app.FragmentActivity
 import com.liun.example.base.BasePresenter
 import com.liun.example.base.BaseView
 import com.liun.example.blog.model.BannerBean
-import com.liun.example.blog.model.BlogBean
+import com.liun.example.blog.model.Blog
 
 /**
  * Description:
@@ -14,12 +15,13 @@ import com.liun.example.blog.model.BlogBean
 interface BlogContract : BasePresenter {
 
     interface View : BaseView<Presenter> {
-        fun blogList(blogBean: BlogBean)
-        fun bannerList(bannerBean: BannerBean)
+        fun blogList(blogBean: List<Blog>)
+        fun bannerList(banners: List<BannerBean>)
+        val aty: FragmentActivity
     }
 
     interface Presenter : BasePresenter {
-        fun getBlogList(index:Int)
+        fun getBlogList(index: Int)
         fun getBannerList()
     }
 }

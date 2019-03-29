@@ -1,6 +1,5 @@
 package com.liun.example
 
-import android.app.Activity
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
 import com.liun.example.adapter.MyViewAdapter

@@ -13,12 +13,16 @@ import io.reactivex.disposables.Disposable
  * Author：Liun
  * Date:2019/03/28 11:13
  */
-abstract class BaseObserver<T>(private val activity: Activity) : Observer<BaseEntity<T>> {
+abstract class BaseObserver<T>(private var activity: Activity?) : Observer<BaseEntity<T>> {
 
-    private lateinit var dialog:Dialog
+    private var dialog: Dialog? = null
+
     override fun onSubscribe(d: Disposable) {
-        dialog = BaseIProgressDialog(activity).dialog!!
-        dialog.show()
+        if (null != activity) {
+            dialog = BaseIProgressDialog(activity!!).dialog!!
+            dialog!!.show()
+        }
+
     }
 
     override fun onNext(value: BaseEntity<T>) {
@@ -32,12 +36,12 @@ abstract class BaseObserver<T>(private val activity: Activity) : Observer<BaseEn
 
     override fun onError(e: Throwable) {
         Log.e(TAG, "error:$e")
-        dialog.dismiss()
+        if (null != dialog) dialog!!.dismiss()
     }
 
     override fun onComplete() {
         Log.d(TAG, "onComplete")
-        dialog.dismiss()
+        if (null != dialog) dialog!!.dismiss()
     }
 
 

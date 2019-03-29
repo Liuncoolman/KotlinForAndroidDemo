@@ -1,7 +1,5 @@
 package com.liun.example.blog.model
 
-import com.liun.example.base.BaseBean
-
 /**
  * Description:
  * Author：Liun
@@ -9,69 +7,33 @@ import com.liun.example.base.BaseBean
  *
  */
 
-class BlogBean : BaseBean() {
-    /*
-        "apkLink": "",
-        "author": "闲鱼",
-        "chapterId": 375,
-        "chapterName": "Flutter",
-        "collect": false,
-        "courseId": 13,
-        "desc": "",
-        "envelopePic": "",
-        "fresh": true,
-        "id": 7738,
-        "link": "https://www.yuque.com/xytech/flutter",
-        "niceDate": "21小时前",
-        "origin": "",
-        "projectLink": "",
-        "publishTime": 1546598723000,
-        "superChapterId": 375,
-        "superChapterName": "跨平台",
-        "tags": [],
-        "title": "闲鱼Flutter技术合集",
-        "type": 0,
-        "userId": -1,
-        "visible": 1,
-        "zan": 0
-    */
+data class BlogBean(
+    val curPage: Int,
+    val datas: List<Blog>
+)
 
-    var data: Data = Data()
-
-    class Data {
-        var datas: List<Blog> = arrayListOf()
-        var curPage: Int = 0
-        var offset: Int = 0
-        var pageCount = 0
-        var size: Int = 0
-        var total = 0
-        var over: Boolean = false
-    }
-
-
-    class Blog {
-        var apkLink: String = ""
-        var author: String = ""
-        var chapterId: Int = 0
-        var chapterName: String = ""
-        var collect: Boolean = false
-        var courseId: Int = 0
-        var desc: String = ""
-        var envelopePic: String = ""
-        var fresh: Boolean = false
-        var id: Int = 0
-        var link: String = ""
-        var niceDate: String = ""
-        var origin: String = ""
-        var projectLink: String = ""
-        var publishTime: Long = 0L
-        var superChapterId: Int = 0
-        var superChapterName: String = ""
-        var tags: List<Any> = arrayListOf()
-        var title: String = ""
-        var type: Int = 0
-        var userId: Int = 0
-        var visible: Int = 0
-        var zan: Int = 0
-    }
-}
+data class Blog(
+    val apkLink: String,
+    val author: String,
+    val chapterId: Int,
+    val chapterName: String,
+    val collect: Boolean,
+    val courseId: Int,
+    val desc: String,
+    val envelopePic: String,
+    val fresh: Boolean,
+    val id: Int,
+    val link: String,
+    val niceDate: String,
+    val origin: String,
+    val projectLink: String,
+    val publishTime: Long,
+    val superChapterId: Int,
+    val superChapterName: String,
+    val tags: List<Any>,
+    val title: String,
+    val type: Int,
+    val userId: Int,
+    val visible: Int,
+    val zan: Int
+)

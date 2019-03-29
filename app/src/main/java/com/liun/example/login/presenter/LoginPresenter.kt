@@ -34,11 +34,9 @@ class LoginPresenter() : LoginContract.Presenter {
             }
         }, view.userName, view.userPwd)*/
 
-        val observable =
-            RetrofitFactory.instance.getApiService().login(view.userName, view.userPwd)
-        observable
+
+        RetrofitFactory.instance.getApiService().login(view.userName, view.userPwd)
             .subscribeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread()) // 指定主线程
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : BaseObserver<LoginBean>(view.aty) {
                 override fun onSuccess(t: LoginBean?) {
