@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.liun.example.Constants
 import com.liun.example.R
 import com.liun.example.base.BaseFragment
@@ -54,6 +55,7 @@ class MeFragment : BaseFragment(), MeContract.MeView {
         SPUtils.getInstance().put(Constants.KEY_IS_LOGIN, false)
         val intent = Intent(activity, LoginActivity::class.java)
         startActivity(intent)
+        ToastUtils.showShort("登出成功")
         activity?.finish()
     }
 
